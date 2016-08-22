@@ -35,6 +35,7 @@ get_header(); ?>
 					if ( comments_open() || get_comments_number() ) {
 						comments_template();
 					}
+					// wpb_get_post_views(get_the_ID());
 				endwhile;
 			?>
 
