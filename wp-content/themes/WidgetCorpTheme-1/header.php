@@ -42,9 +42,9 @@
 
 <body <?php body_class(); ?>>
 	
-	<div id="page-wrap">
+	<div id="page-wrap" class="group">
 
 		<div id="header">
 			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
-			<div class="description"><?php bloginfo('description'); ?></div>
+			<p><?php bloginfo('description'); ?></p>
 		</div>
