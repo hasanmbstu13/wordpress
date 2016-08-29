@@ -1,39 +1,42 @@
-<aside>
 
+    <aside>
+
+        <?php get_search_form(); ?>
+        
+        <nav>
+           <?php wp_nav_menu(array('menu' => 'Main Nav Menu')); ?>
+        </nav>
+
+        <div class="widget latest-post">
+
+            <h4>Latest Post</h4>
+
+            <div class="sidebar-post">
+                <p class="date">March 10, 2010</p>
+                <h5>This just in: Don't get Gremlins Wet!</h5>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+            </div>
+
+        </div> <!-- END Latest Posts -->
+
+        <div class="widget industry-news">
+
+            <h4>Industry News</h4>
+
+            <div class="sidebar-post">
+                <p class="date">March 11, 2010</p>
+                <h5>Widgets are the new Sprockets</h5>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+            </div>
+
+            <div class="sidebar-post">
+                <p class="date">March 03, 2010</p>
+                <h5>Fifth Birthday of the Intersprockletometer</h5>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p>
+            </div>
+
+        </div> <!-- END Industry News -->
     <?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('Sidebar Widgets')) : else : ?>
-    
         <!-- All this stuff in here only shows up if you DON'T have any widgets active in this zone -->
-
-    	<?php get_search_form(); ?>
-    
-    	<?php wp_list_pages('title_li=<h2>Pages</h2>' ); ?>
-    
-    	<h2>Archives</h2>
-    	<ul>
-    		<?php wp_get_archives('type=monthly'); ?>
-    	</ul>
-        
-        <h2>Categories</h2>
-        <ul>
-    	   <?php wp_list_categories('show_count=1&title_li='); ?>
-        </ul>
-        
-    	<?php wp_list_bookmarks(); ?>
-    
-    	<h2>Meta</h2>
-    	<ul>
-    		<?php wp_register(); ?>
-    		<li><?php wp_loginout(); ?></li>
-    		<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress</a></li>
-    		<?php wp_meta(); ?>
-    	</ul>
-    	
-    	<h2>Subscribe</h2>
-    	<ul>
-    		<li><a href="<?php bloginfo('rss2_url'); ?>">Entries (RSS)</a></li>
-    		<li><a href="<?php bloginfo('comments_rss2_url'); ?>">Comments (RSS)</a></li>
-    	</ul>
-	
-	<?php endif; ?>
-
-</aside>
+    <?php endif; ?>
+    </aside>

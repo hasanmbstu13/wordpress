@@ -30,5 +30,14 @@
     		'after_title'   => '</h2>'
     	));
     }
+    
+    // proof nav menu edited by MH
+    if (function_exists('register_nav_menus')) {
+        register_nav_menus(
+            array(
+                'main_nav' => 'Main Navigation Menu'
+            )
+        );
+    }
 
 ?>
