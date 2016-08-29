@@ -32,6 +32,7 @@
     }
     
     // proof nav menu edited by MH
+    // register navbar
     if (function_exists('register_nav_menus')) {
         register_nav_menus(
             array(

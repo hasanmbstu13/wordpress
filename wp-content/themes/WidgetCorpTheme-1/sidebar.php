@@ -4,18 +4,31 @@
         <?php get_search_form(); ?>
         
         <nav>
+            <!-- Add dynamic menu by MH-->
            <?php wp_nav_menu(array('menu' => 'Main Nav Menu')); ?>
         </nav>
 
         <div class="widget latest-post">
 
             <h4>Latest Post</h4>
+           <!-- To pull content in wordpress we use special funtion called query_posts MH -->
+           <!-- post_per_page=1 return 1 posts per page -->
+           <?php query_posts("post_per_page=1"); the_post(); ?> 
 
-            <div class="sidebar-post">
+            <!-- Static thing MH-->
+            <!-- <div class="sidebar-post">
                 <p class="date">March 10, 2010</p>
                 <h5>This just in: Don't get Gremlins Wet!</h5>
                 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+            </div> -->
+            <!-- Now change it in wp in dynamic way -->
+             <div class="sidebar-post">
+                <p class="date"><?php the_date(); ?></p>
+                <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                <p><?php the_excerpt(); ?></p>
             </div>
+
+            <?php wp_reset_query(); ?>
 
         </div> <!-- END Latest Posts -->
 
