@@ -1,4 +1,6 @@
 <?php get_header(); ?>
+<!-- archive file is used for archive post like month or year etc -->
+
 
 		<?php if (have_posts()) : ?>
 

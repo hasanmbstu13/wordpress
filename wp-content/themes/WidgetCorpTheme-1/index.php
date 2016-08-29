@@ -1,4 +1,8 @@
+
 <?php get_header(); ?>
+<!-- Wordpress works with modular kind of way
+get_header means go the folder and find header.php 
+and place the code right here -->
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -30,6 +34,7 @@
 
 	<?php endif; ?>
 
+<!-- get_sidebar means put all sidebar here -->
 <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
