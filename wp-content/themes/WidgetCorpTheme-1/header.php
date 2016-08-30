@@ -32,6 +32,9 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 	
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+	<?php if(is_page_template('page-product.php')) { ?>
+		<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/product.css">
+	<?php } ?>
 	
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
