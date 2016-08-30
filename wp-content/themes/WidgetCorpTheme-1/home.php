@@ -1,38 +1,39 @@
 
 <?php get_header(); ?>
-<!-- Wordpress works with modular kind of way
-get_header means go the folder and find header.php 
-and place the code right here -->
+
 <div id='main-content'>
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+	<p id="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 
-		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
+	<blockquote id="main-quote">We are able to do the work we do because of the quality of these widgets. <cite>- Frank James, Tick Tock Corp</cite></blockquote>
 
-			<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+	<h2>Featured Widgets</h2>
 
-			<?php include (TEMPLATEPATH . '/inc/meta.php' ); ?>
-		
-			<div class="entry">
-				<?php the_content(); ?>
+	<ul id="featured-widgets">
+		<li>
+			<h3>Super Sprocket 1000</h3>
+			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+			<div class="image-and-button">
+				<img src="product-images/prod-supersprocket.png" alt="Image of Super Sprocket 1000" />
+				<a href="#" class="button">View Product</a>
 			</div>
-
-			<div class="postmetadata">
-				<?php the_tags('Tags: ', ', ', '<br />'); ?>
-				Posted in <?php the_category(', ') ?> | 
-				<?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?>
+		</li>
+		<li>
+			<h3>Triple Sprunkler</h3>
+			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+			<div class="image-and-button">
+				<img src="product-images/prod-sprunkler.png" alt="Image of Super Sprunkler" />
+				<a href="#" class="button">View Product</a>
 			</div>
+		</li>
+	</ul>
 
-		</div>
+	<br />
 
-	<?php endwhile; ?>
+	<h2>Web Special<em> of the</em> Week</h2>
 
-	<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
-
-	<?php else : ?>
-
-		<h2>Not Found</h2>
-
-	<?php endif; ?>
+	<div class="coupon">
+		Buy two sprockets get the third free!
+	</div>
 </div>
 <!-- get_sidebar means put all sidebar here -->
 <?php get_sidebar(); ?>
