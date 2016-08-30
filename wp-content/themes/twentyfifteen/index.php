@@ -36,8 +36,23 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'content', get_post_format() );
-
+				// get_template_part( 'content', get_post_format() );
+				the_title();
+				// echo '<br>';
+				// if ( has_post_thumbnail()) {
+				//  // $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large');
+				//  // echo '<a href="' . $large_image_url[0] . '" title="' . the_title_attribute('echo=0') . '" >';
+				//  echo get_the_post_thumbnail($post->ID, 'thumbnail', array('class' => 'aligncentre')); 
+				//  // echo '</a>';
+				// }
+				// get_the_post_thumbnail();
+				if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+				  the_post_thumbnail();
+				}
+				// if(has_excerpt())
+				the_excerpt();
+				// var_dump( $wpdb->last_query );
+				// echo $GLOBALS['wp_query']->request; 
 			// End the loop.
 			endwhile;
 

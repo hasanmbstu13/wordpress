@@ -13,6 +13,8 @@
 	</div><!-- .site-content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
+		<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?> seconds.
+	
 		<div class="site-info">
 			<?php
 				/**

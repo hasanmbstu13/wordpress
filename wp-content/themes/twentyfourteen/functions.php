@@ -1,18 +1,4 @@
 <?php
-// function child_theme_enqueue_styles() 
-// {
-    
-//     // added for breaking news 
-// //    wp_register_script('countUp-jquery', get_stylesheet_directory_uri() . '/js/countUp-jquery.js?v=1.0', array('jquery'), false, true);
-//     wp_register_script('main', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), 2.0, true);
-// 	wp_localize_script( 'main', 'dt_ajax_obj', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
-
-    
-//     //wp_localize_script( 'main', 'dt_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-                
-//     //wp_enqueue_script('script-script', get_stylesheet_directory_uri() . '/js/script.js', array(),false,true);
-// }
-// add_action("wp_enqueue_scripts", "child_theme_enqueue_styles");
 /**
  * Twenty Fourteen functions and definitions
  *
@@ -69,24 +55,17 @@ if ( ! function_exists( 'twentyfourteen_setup' ) ) :
  *
  * @since Twenty Fourteen 1.0
  */
-
-wp_enqueue_script( 'jquery-script', 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js');
-
-wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array ( 'jquery' ), 2.1, true);
-
-wp_localize_script( 'main', 'dt_ajax_obj', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
-
 function twentyfourteen_setup() {
 
 	/*
 	 * Make Twenty Fourteen available for translation.
 	 *
-	 * Translations can be added to the /languages/ directory.
+	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyfourteen
 	 * If you're building a theme based on Twenty Fourteen, use a find and
 	 * replace to change 'twentyfourteen' to the name of your theme in all
 	 * template files.
 	 */
-	load_theme_textdomain( 'twentyfourteen', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'twentyfourteen' );
 
 	// This theme styles the visual editor to resemble the theme style.
 	add_editor_style( array( 'css/editor-style.css', twentyfourteen_font_url(), 'genericons/genericons.css' ) );
@@ -134,11 +113,12 @@ function twentyfourteen_setup() {
 
 	// This theme uses its own gallery styles.
 	add_filter( 'use_default_gallery_style', '__return_false' );
+
+	// Indicate widget sidebars can use selective refresh in the Customizer.
+	add_theme_support( 'customize-selective-refresh-widgets' );
 }
 endif; // twentyfourteen_setup
 add_action( 'after_setup_theme', 'twentyfourteen_setup' );
-
-
 
 /**
  * Adjust content_width value for image attachment template.
@@ -339,9 +319,9 @@ function twentyfourteen_the_attached_image() {
 
 	// If there is more than 1 attachment in a gallery...
 	if ( count( $attachment_ids ) > 1 ) {
-		foreach ( $attachment_ids as $attachment_id ) {
+		foreach ( $attachment_ids as $idx => $attachment_id ) {
 			if ( $attachment_id == $post->ID ) {
-				$next_id = current( $attachment_ids );
+				$next_id = $attachment_ids[ ( $idx + 1 ) % count( $attachment_ids ) ];
 				break;
 			}
 		}
@@ -540,91 +520,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow'] ) {
 	require get_template_directory() . '/inc/featured-content.php';
 }
-
-add_action( 'wp_ajax_register_action_hook', 'hit_count' );
-add_action( 'wp_ajax_nopriv_register_action_hook', 'hit_count' );
-function hit_count(){	
-	$url_segments 		= explode("/",$_GET['url']);
-	$slug 	= array_slice($url_segments, -2, 1);
-	$args = array(
-	  'name'        => $slug[0],
-	  'post_type'   => 'post',
-	  'post_status' => 'publish',
-	  'numberposts' => 1
-	);
-	
-	$current_post = get_posts($args);
-	$post_id = $current_post['0']->ID;
-
-	$count_key = 'wpb_post_views_count';
-	$count = get_post_meta($post_id, $count_key, true);
-	if($count==''){
-	    $count = 0;
-	    delete_post_meta($post_id, $count_key);
-	    add_post_meta($post_id, $count_key, '0');
-	}else{
-	    $count++;
-	    update_post_meta($post_id, $count_key, $count);
-	}
-
-	// hit count
-	$count_key = 'wpb_post_views_count';
-    $count = get_post_meta($post_id, $count_key, true);
-    if($count==''){
-        delete_post_meta($post_id, $count_key);
-        add_post_meta($post_id, $count_key, '0');
-        return "0 View";
-    }
-	//     // return $count.' Views';
-
-	$response = json_encode(array(
-	    'status' => 'success',
-	    'post_hit' => $count
-	  ));
-	 header( "Content-Type: application/json" );
-	 echo $response;
-	 die();
-
-}
-
-// // Store post views count in database
-// function wpb_set_post_views($postID) {
-//     $count_key = 'wpb_post_views_count';
-//     $count = get_post_meta($postID, $count_key, true);
-//     if($count==''){
-//         $count = 0;
-//         delete_post_meta($postID, $count_key);
-//         add_post_meta($postID, $count_key, '0');
-//     }else{
-//         $count++;
-//         update_post_meta($postID, $count_key, $count);
-//     }
-// }
-// //To keep the count accurate, lets get rid of prefetching
-// remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
-
-
-// function wpb_track_post_views ($post_id) {
-//     if ( !is_single() ) return;
-//     if ( empty ( $post_id) ) {
-//         global $post;
-//         $post_id = $post->ID;    
-//     }
-//     wpb_set_post_views($post_id);
-// }
-// add_action( 'wp_head', 'wpb_track_post_views');
-
-
-// // Display the post views count
-// function wpb_get_post_views($postID){
-//     $count_key = 'wpb_post_views_count';
-//     $count = get_post_meta($postID, $count_key, true);
-//     if($count==''){
-//         delete_post_meta($postID, $count_key);
-//         add_post_meta($postID, $count_key, '0');
-//         return "0 View";
-//     }
-//     return $count.' Views';
-// }
-
-// wpb_get_post_views(get_the_ID());
