@@ -1,0 +1,41 @@
+By downloading, installing, copying, or otherwise using the SOFTWARE - You agree to be bound by the terms of this LICENSE. If You do not agree to the terms of this LICENSE don't download, install, copy, or otherwise use the SOFTWARE.
+
+LIMITATIONS
+-----------
+
+(a) SOFTWARE cannot be embedded in any website with businesses of Loan, Insurance, Interest Based Businesses, Dating, Pornographic, Erotic & Adult Content, Film Industry and Related services, Music, Musical Instruments & rRelated services, Alcoholic Beverages and Related products, Religious Content (unless approved). In case of any confusion you should ask before purchase. No support will be provided for such cases.
+
+(b) Sell, lease, assign, transfer, sublicense, disseminate, translate, duplicate, reproduce or copy the Software (or permit any of the foregoing) or any information pertaining thereto to any other party except as permitted in this Agreement.
+
+(c) If you are planning on distributing your software product (for example a package that can be installed on your customer's servers) then you need an Enterprise license.
+
+(d) Disassemble, decompile, decode or otherwise reverse translate or engineer, or attempt in any manner to reconstruct or discover any source code or underlying algorithms of Software, if provided in object code form only.
+
+(e) You may not distribute the source code, or any modification, enhancement, derivative work and/or extension thereto, in source code form.
+
+(f) Number of Developers usage will be 5 for Premium version. In Enterprise version, there is no limitation on number of developers using it.
+
+(g) Premium version can be used on only 1 domain (or 1 application with dev/stage/live domains). Enterprise version can be integrated in unlimited number of domains.
+
+MISCELLANEOUS
+-------------
+
+(a) Neither the name of Query Interface nor the name of it contributor may be used to endorse or promote products derived from this software without specific prior written permission.
+
+(b) We may use buyer name & company details in the list of recent buyers section of website, unless requested to remove.
+    
+(c) Subscription period will be 3 months (for premium version) & 1 year (for enterprise version) after purchase date for free upgrades & priority support.
+
+(d) Refund cases within 30 days of purchase will only be entertained.
+
+(e) LICENSE can change without USER confirmation. Visit website for latest LICENSE revision (http://www.queryinn.com/)
+
+TERMINATION
+-----------
+
+This LICENSE will automatically terminate if Customer fails to comply with any of the terms and conditions hereof. In such event, Customer must destroy all copies of the APPLICATION.
+
+THIS SOFTWARE IS PROVIDED BY Zeeshan Khan ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL Zeeshan Khan BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Copyright (c) 2010-2014, Query Interface
+All rights reserved.

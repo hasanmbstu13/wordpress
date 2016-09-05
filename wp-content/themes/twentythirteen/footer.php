@@ -12,6 +12,8 @@
 
 		</div><!-- #main -->
 		<footer id="colophon" class="site-footer" role="contentinfo">
+		<?php echo get_num_queries(); ?> queries in <?php timer_stop(1); ?> seconds.
+		
 			<?php get_sidebar( 'main' ); ?>
 
 			<div class="site-info">
