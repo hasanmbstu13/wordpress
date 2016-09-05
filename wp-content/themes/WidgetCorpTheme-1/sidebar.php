@@ -12,6 +12,7 @@
 
             <h4>Latest Post</h4>
            <!-- To pull content in wordpress we use special funtion called query_posts MH -->
+           <!-- showing recent posts MH -->
            <!-- post_per_page=1 return 1 posts per page -->
            <?php query_posts("post_per_page=1"); the_post(); ?> 
 
