@@ -35,7 +35,11 @@
 	<?php if(is_page_template('page-product.php')) { ?>
 		<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/product.css">
 	<?php } ?>
-	
+
+	<?php if(is_page_template('page-category.php')) { ?>
+		    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/store.css">
+	<?php } ?>
+		
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 	<?php if ( is_singular() ) wp_enqueue_script('comment-reply'); ?>
