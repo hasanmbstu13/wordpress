@@ -25,7 +25,7 @@ body { font: 12px/2 Georgia, serif; background: url(images/bg.png); }
 h1, h2, h3, h4, h5 { margin: 0 0 5px 0; font-weight: normal; line-height: 1.5; }
 h1, h2 { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 100; }
 h1 { font-size: 42px; text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #ccc; font-weight: 100; text-transform: uppercase; }
-.giant { font-size: 90px; }
+.giant { font-size: 75px; }
 h2 { font-size: 26px; color: #647484; text-shadow: 1px 1px 0 #d7ddf2, 2px 2px 0 #d7ddf2; text-transform: uppercase; letter-spacing: 5px; }
 h2 em { font: italic 24px Baskerville, Georgia, Serif; letter-spacing: 0; color: black; text-transform: none; }
 h3 { font-size: 22px; background: #647484; color: white; padding: 0 0 0 20px; }
