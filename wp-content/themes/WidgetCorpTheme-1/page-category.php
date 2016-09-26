@@ -9,7 +9,7 @@
 
 <div id='main-content'>
 	<?php
-		//categoriesCF means categories custom filed MH
+		//categoriesCF means categories custom field MH
 		$categoriesCF = get_post_meta($post->ID, "categories", true);
 		// example return value = "Sprockets|92,Sprunklers|94"
 		

@@ -35,7 +35,8 @@
 	<?php if(is_page_template('page-product.php')) { ?>
 		<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/product.css">
 	<?php } ?>
-
+	
+	<!-- if is page template page-category exists then include store.css -->
 	<?php if(is_page_template('page-category.php')) { ?>
 		    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/store.css">
 	<?php } ?>
