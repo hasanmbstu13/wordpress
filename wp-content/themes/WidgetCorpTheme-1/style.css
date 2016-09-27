@@ -124,6 +124,13 @@ footer { width: 800px; margin: 0 auto 20px; color: #999; text-transform: upperca
 } /* END screen media */
 
 
+.wp-caption.aligncenter img {
+    width: 450px;
+}
+
+.entry iframe {
+    width: 450px;
+}
 @media print {
 
 .do-not-print { display: none; }
