@@ -55,7 +55,7 @@ add_shortcode('twitter', function($atts, $content) {
 		$tweets = fetch_tweets($num_tweets, $username, $tweet_reset_time);
 	}
 
-	return "<a href='http://twitter.com/$username'>$content</a>";
+	return "$tweets <p><a href='http://twitter.com/$username'>$content</a></p>";
 	// extract will extract all array key as variable like $atts['username'] change in $username
 });
 
@@ -79,19 +79,34 @@ function fetch_tweets($num_tweets, $username, $tweet_reset_time){
 	// $tweets = curl("https://api.twitter.com/1/statuses/user_timeline/jbrooksuk.json");
 	// var_dump($username);
 	// $tweets = curl("http://api.twitter.com/1/statuses/user_timeline/$username.json");
-	 $tweets = curl($username,$num_tweets);
-	// $tweets = curl("https://twitter.com/statuses/user_timeline/$username.json");
-	// var_dump('hi iam from fetch_tweets');
-	// var_dump($tweets);
-	// echo "<pre>";
-	// print_r($tweets);
-	// echo "</pre>";
+	global $id;
+	$recent_tweets = get_post_meta($id, 'mh_recent_tweets');
+	reset_data($recent_tweets, $tweet_reset_time);
+	// delete_post_meta($id, 'mh_recent_tweets'); die();
+	// print_r($recent_tweets); die();
+	// if no cache, fetch new tweets and cache.
+	if(empty($recent_tweets)) {
+		$tweets = curl($username,$num_tweets);
+		// $tweets = curl("https://twitter.com/statuses/user_timeline/$username.json");
+		// var_dump('hi iam from fetch_tweets');
+		// var_dump($tweets);
+		// echo "<pre>";
+		// print_r($tweets);
+		// echo "</pre>";
 
-	$data = array();
-	foreach ($tweets as $tweet) {
-		if($num_tweets-- === 0) break;
-		$data[] = $tweet->text;
+		$data = array();
+		foreach ($tweets as $tweet) {
+			if($num_tweets-- === 0) break;
+			$data[] = $tweet->text;
+		}
+
+		$recent_tweets = array( (int)date('i', time()));
+		$recent_tweets[] = '<ul class="mh_tweets"><li>' . implode('</li><li>', $data). '</li><ul>';
+
+		cache($recent_tweets);
 	}
+
+	return isset($recent_tweets[0][1]) ? $recent_tweets[0][1] : $recent_tweets[1];
 }
 
 function curl($username,$num_tweets){
@@ -187,6 +202,32 @@ function curl($username,$num_tweets){
 	// $res = curl_exec($c);
 
 	return $twitter_data;	
+}
+
+function cache($recent_tweets){
+	// [0] = current minute
+   // [1] = tweet html fragment
+   global $id; // get the global id of the post
+   // id refers to the id of the post
+   // name of the meta data
+   // name could be anything its simply identifier
+   // true means every time data will be unique then add meta in the database
+   // otherwise we use update_post_meta() method
+   add_post_meta($id, 'mh_recent_tweets', $recent_tweets, true);
+}
+
+function reset_data($recent_tweets, $tweet_reset_time){
+	global $id;
+	// print_r($recent_tweets);
+	// $recent_tweets[0][0] this is the time of the last updated
+	if(isset($recent_tweets[0][0])) {
+		$delay = $recent_tweets[0][0] + (int) $tweet_reset_time;
+		if($delay >= 60) $delay -= 60;
+		// var_dump((int) date('i', time()));
+		if($delay <= (int) date('i', time())) {
+			delete_post_meta($id,'mh_recent_tweets');
+		}
+	}
 }
 
 
