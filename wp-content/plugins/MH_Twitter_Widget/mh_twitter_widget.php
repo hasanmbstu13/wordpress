@@ -82,7 +82,14 @@ class MH_Twitter_Widget extends WP_Widget {
 
 	private function fetch_tweets($tweet_count, $username)
 	{
-		$tweets = wp_remote_get("https://api.twitter.com/1.1/statuses/user_timeline/$username.json");
+		$url = "https://api.twitter.com/1.1/statuses/user_timeline/$username.json";
+		$args = array(
+		  'headers' => array(
+		    'Authorization' => 'Basic ' . base64_encode( 'hasanmbstu13' . ':' .  )
+		  )YOUR_PASSWORD
+		);
+		// wp_remote_request( $url, $args );
+		$tweets = wp_remote_get($url, $args);
 		echo '<pre>';
 			print_r($tweets);
 		echo '</pre>';
