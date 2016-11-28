@@ -20,6 +20,7 @@ class MH_Twitter_Widget extends WP_Widget {
 
 	}
 
+	// This responsible for handling form data
 	public function form($instance)
 	{
 		extract($instance);
@@ -60,6 +61,7 @@ class MH_Twitter_Widget extends WP_Widget {
 	public function widget($args, $instance)
 	{	
 		// print_r($instance);
+		// exit;
 		extract($args);
 		extract($instance);
 
@@ -82,14 +84,37 @@ class MH_Twitter_Widget extends WP_Widget {
 
 	private function fetch_tweets($tweet_count, $username)
 	{
-		$url = "https://api.twitter.com/1.1/statuses/user_timeline/$username.json";
-		$args = array(
-		  'headers' => array(
-		    'Authorization' => 'Basic ' . base64_encode( 'hasanmbstu13' . ':' .  )
-		  )YOUR_PASSWORD
-		);
+		// $url = "https://api.twitter.com/1.1/statuses/user_timeline/$username.json";
+		// $url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=$username&count=$tweet_count";
+		$token = '3225959616-i357BgPVtiIPimz3qZqqMrFCqC2AwtzNoAmfaod';
+		$url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=$username&access_token=$token";
+		echo $url;
+// 		$url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=$username, array(
+//     \"headers\" => array(
+//         \"Authorization\" => \"Bearer \".$token
+//     ),
+// ))";
+
+// echo $url; 
+// var_dump($url); die();
+		// $url = "http://twitter.com/statuses/user_timeline/$username.json";
+		// $args = array(
+		//   'headers' => array(
+		//     'Authorization' => 'Basic ' . base64_encode( 'hasanmbstu13' . ':' .  '11309011008559'))
+		// );
 		// wp_remote_request( $url, $args );
-		$tweets = wp_remote_get($url, $args);
+
+		// $options = array(
+		//         'username' => 'hasanmbstu13',
+		//         'accessToken' => '3225959616-i357BgPVtiIPimz3qZqqMrFCqC2AwtzNoAmfaod',
+		//         'oauthOptions' => array(
+		//             'consumerKey' => 'qvLTtoeCp5DqDi7okj0gvUY8m',
+		//             'consumerSecret' => 'nHlCKKvSzS0UR5LvcCcBJQdx2o65VeEYpnZArRB1IKUysHCMAm',
+		//         )
+		//     );
+
+		// $tweets = wp_remote_get($url, $options);
+		$tweets = wp_remote_get($url);
 		echo '<pre>';
 			print_r($tweets);
 		echo '</pre>';
